@@ -1,3 +1,4 @@
+import { Button, Flex, FormLabel, Heading, Input, Text } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useChannelContext } from "../hooks/useChannelContext"
@@ -9,22 +10,30 @@ export const ChannelCreate = () => {
 
   useEffect(() => {
     if (!userName) {
-      navigate('/login');
+      navigate('/');
       return;
     }
   }, [])
   return (
-    <div>
-      <form action="" onSubmit={(e) => {
-        e.preventDefault()
-        createChannel(channelName)
-        setChannelName('')
+    <Flex direction="column" py="12">
+      <Heading as="h1">Crie o seu canal</Heading>
+      <Flex 
+        as="form" 
+        flexDirection="column"
+        my="8"
+        w="100%"
+        borderRadius={8}
+        action="" 
+        onSubmit={(e) => {
+          e.preventDefault()
+          createChannel(channelName)
+          setChannelName('')
       }}>
-        <p>Nome do canal</p>
-        <input type="text" value={channelName} onChange={(e) => setChannelName(e.target.value)} />
+        <FormLabel>Nome do canal</FormLabel>
+        <Input type="text" value={channelName} onChange={(e) => setChannelName(e.target.value)} />
         
-        <button type="submit">Criar canal</button>
-      </form>
-    </div>
+        <Button mt="4" type="submit">Criar canal</Button>
+      </Flex>
+    </Flex>
   )
 }

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ChannelCreate } from "./pages/ChannelCreate";
 import { ChannelList } from "./pages/ChannelList";
 import { Chat } from "./pages/Chat";
@@ -7,9 +7,9 @@ import { Login } from "./pages/Login";
 function App() {
   return (
     <div>
-      <BrowserRouter>
+      <Router>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
 
           <Route path="/chat/:channelId" element={<Chat />} />
 
@@ -22,7 +22,7 @@ function App() {
             </>
           } />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }
